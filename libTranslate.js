@@ -3,9 +3,10 @@ if (typeof module !== 'undefined') {
         Google: require('./libTranslateGoogle.js'),
         DeepL: require('./libTranslateDeepL.js'),
         Microsoft: require('./libTranslateMicrosoft.js'),
-        VietPhrase: require('./libTranslateVietPhrase.js')
+        VietPhrase: require('./libTranslateVietPhrase.js'),
+        Ollama: require('./libTranslateOllama.js')
     };
 }
 else {
-    return ['Google', 'DeepL', 'Microsoft', 'VietPhrase'];
+    return ['Google', 'DeepL', 'Microsoft', 'VietPhrase', 'Ollama'];
 }
