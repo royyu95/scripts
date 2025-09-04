@@ -2,7 +2,7 @@
 
 A fork for personal use. 
 Instead of just returning translation, more analysis of game text are available: 
-1. Ollama (Still too slow to fluently use now in 2025); 
+1. Ollama (Still too slow to be fluently used now in 2025); 
 2. [mdict](https://github.com/terasum/js-mdict) + traditional Japanese morphological analyzer ([Kuromoji](https://github.com/takuyaa/kuromoji.js) or [Ichiran](https://github.com/tshatrov/ichiran)). The mdict dictionary is from [Freemdict](https://forum.freemdict.com/t/topic/11703). 
 
 
