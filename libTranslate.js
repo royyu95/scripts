@@ -5,9 +5,10 @@ if (typeof module !== 'undefined') {
         Microsoft: require('./libTranslateMicrosoft.js'),
         VietPhrase: require('./libTranslateVietPhrase.js'),
         Ollama: require('./libTranslateOllama.js'),
-        kuromoji: require('./libTranslateKuromoji.js')
+        kuromoji: require('./libTranslateKuromoji.js'),
+        ichiran: require('./libTranslateIchiran.js')
     };
 }
 else {
-    return ['Google', 'DeepL', 'Microsoft', 'VietPhrase', 'Ollama', 'kuromoji'];
+    return ['Google', 'DeepL', 'Microsoft', 'VietPhrase', 'Ollama', 'kuromoji', 'ichiran'];
 }
