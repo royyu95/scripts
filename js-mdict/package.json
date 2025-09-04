@@ -1,6 +1,6 @@
 {
   "name": "js-mdict",
-  "version": "6.0.7",
+  "version": "6.0.8",
   "description": "mdict (*.mdx, *.mdd) file reader",
   "author": "terasum <terasum@163.com>",
   "repository": "git+https://github.com/terasum/js-mdict.git",
@@ -27,22 +27,7 @@
   "engines": {
     "node": ">=10.20.0"
   },
-  "scripts": {
-    "prepareBuild": "shx mkdir -p dist/{cjs,esm}",
-    "prepublishOnly": "npm run prepareBuild && npm run build",
-    "clean": "shx rm -rf dist/*",
-    "test": "jest --projects jest.config.js",
-    "build-cjs": "tsc --module commonjs --outDir dist/cjs/ && echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
-    "build-esm": "tsc  --module nodenext --moduleResolution nodenext --outDir dist/esm/ && echo '{\"type\": \"module\"}' > dist/esm/package.json",
-    "build": "npm run build-cjs && npm run build-esm",
-    "watch": "tsc --watch",
-    "testall": "mocha --ui qunit dist/test",
-    "lint": "eslint --quiet 'src/**/*.ts' 'tests/**/*.ts'",
-    "lint-fix": "eslint --quiet 'src/**/*.ts' 'tests/**/*.ts' --fix",
-    "prepack": "npm run clean && npm run build",
-    "bench": "jest --projects jest.bench.config.js"
-  },
-  "bin":{
+  "bin": {
     "js-mdict": "./dist/cjs/cli.js"
   },
   "dependencies": {
@@ -98,5 +83,18 @@
     "extension": [
       ".ts"
     ]
+  },
+  "scripts": {
+    "prepareBuild": "shx mkdir -p dist/{cjs,esm}",
+    "clean": "shx rm -rf dist/*",
+    "test": "jest --projects jest.config.js",
+    "build-cjs": "tsc --module commonjs --outDir dist/cjs/ && echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
+    "build-esm": "tsc  --module nodenext --moduleResolution nodenext --outDir dist/esm/ && echo '{\"type\": \"module\"}' > dist/esm/package.json",
+    "build": "npm run build-cjs && npm run build-esm",
+    "watch": "tsc --watch",
+    "testall": "mocha --ui qunit dist/test",
+    "lint": "eslint --quiet 'src/**/*.ts' 'tests/**/*.ts'",
+    "lint-fix": "eslint --quiet 'src/**/*.ts' 'tests/**/*.ts' --fix",
+    "bench": "jest --projects jest.bench.config.js"
   }
 }
