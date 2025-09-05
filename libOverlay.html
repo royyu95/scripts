@@ -9,12 +9,17 @@
 <body style="overflow: hidden;">
     <div id="app-mount"> <!-- discord overlay like -->
         <div><a></a><a></a><div class="overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden;">
-            <div style="width: 100%; height: 100%; background-color: #4f5660cc; position: absolute;"></div>
-            <div class="layoutUnlocked layoutLocked" style="position: absolute;">
+            <div style="width: 100%; height: 100%; background-color: #4f5660cc; position: absolute; z-index: 0;"></div>
+            <div class="layoutUnlocked layoutLocked" style="position: absolute; z-index: 1;">
                 <h1>Agent</h1>
             </div>
-            <div></div>
-            <!--inject-->
+            <div style="position: relative; z-index: 2;">
+                <!--inject-->
+                <div id="ichiToggleBar" style="margin: 8px 0;">
+                    <button id="ichiToggleBtn" onclick="toggleIchiView()">Show ichi.moe</button>
+                </div>
+                <iframe id="ichiFrame" style="width:100%;height:95%;border:none;display:none;" src=""></iframe>
+            </div>
         </div></div>
         <script>
             var __OVERLAY__ = false, __EXTERNAL__;
@@ -56,6 +61,37 @@
             }
         </script>
         <script src="./libOverlay.js"></script>
+        <script>
+        // Set the ichi.moe URL from JS and toggle visibility
+        var embededSrc = "こんにちは世界";
+        var srcNeedChanged = true;
+        function setIchiUrl(str) {
+            const frame = document.getElementById('ichiFrame');
+            if (embededSrc !== str)
+                srcNeedChanged = (embededSrc !== str);
+            embededSrc = str;
+            if (srcNeedChanged && !(frame.style.display === 'none' || frame.style.display === '')) {
+                frame.src = `https://ichi.moe/cl/qr/?q=${encodeURIComponent(str)}&r=kana`;
+                srcNeedChanged = false;
+            }
+        }
+        window.setIchiUrl = setIchiUrl;
+
+        function toggleIchiView() {
+            const frame = document.getElementById('ichiFrame');
+            const btn = document.getElementById('ichiToggleBtn');
+            if (frame.style.display === 'none' || frame.style.display === '') {
+                frame.style.display = 'block';
+                btn.textContent = 'Hide ichi.moe';
+                setIchiUrl(embededSrc);
+            } else {
+                frame.style.display = 'none';
+                btn.textContent = 'Show ichi.moe';
+            }
+        }
+        </script>
+        <script>
+        </script>
     </div>
 </body>
 

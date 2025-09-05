@@ -253,6 +253,7 @@
         if (data.type === 'copyText') {
             const val = createTextItem(data.id, data.sentence);
             _divTextFlow.appendChild(val[0]);
+            window.setIchiUrl(data.sentence);
         }
         else if (data.type === 'translate') {
             setTextItemTranslate(data);
@@ -434,6 +435,7 @@
         const id = Date.now();
         const val = createTextItem(id, s, '');
         _divTextFlow.appendChild(val[0]);
+        window.setIchiUrl(s);
 
         fetch('/api/translate/?s=' + encodeURI(s))
             .then(r => r.text())
